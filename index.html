@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- META TAGS SEO -->
+    <title>Pixel Nebula | Branding & Diseño Digital Creativo</title>
+    <meta name="description" content="Diseño consciente para marcas con alma. Portfolio de branding, diseño digital y identidad visual donde lo humano y lo digital se encuentran.">
+    <meta name="keywords" content="diseño gráfico, branding, identidad visual, diseño digital, portfolio diseñador, pixel nebula">
+    <meta name="author" content="Pixel Nebula">
+    <meta name="robots" content="index, follow">
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌌</text></svg>">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --nebula-violet: #6C63FF;
+            --cosmic-purple: #8A4FFF;
+            --crimson-orbit: #FF2E63;
+            --copper-glow: #FF9A76;
+            --starlight-yellow: #FFD166;
+            --void-black: #1A1A2E;
+            --soft-cream: #F9F7F7;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--void-black) 0%, #2D2D44 100%);
+            color: var(--soft-cream);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Partículas de fondo - MÁS VISIBLES */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0;
+            animation: float 8s infinite ease-in-out;
+            filter: blur(0.5px);
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        /* Partículas grandes */
+        .particle-large {
+            width: 8px;
+            height: 8px;
+            animation-duration: 12s;
+            opacity: 0.6;
+        }
+
+        /* Partículas medianas */
+        .particle-medium {
+            width: 4px;
+            height: 4px;
+            animation-duration: 8s;
+            opacity: 0.4;
+        }
+
+        /* Partículas pequeñas */
+        .particle-small {
+            width: 2px;
+            height: 2px;
+            animation-duration: 6s;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 0.6;
+                transform: translateX(20px);
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) translateX(-20px) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Efecto de brillo adicional */
+        .particle::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            background: currentColor;
+            filter: blur(3px);
+            opacity: 0.3;
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { opacity: 0.2; transform: scale(1); }
+            to { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, var(--nebula-violet), var(--cosmic-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--soft-cream);
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(249, 247, 247, 0.9);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .highlight {
+            color: var(--starlight-yellow);
+            font-weight: 500;
+            text-shadow: 0 0 10px rgba(255, 209, 102, 0.3);
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .link-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.2rem 2rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            color: var(--soft-cream);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .link-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .link-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .link-button:hover::before {
+            left: 100%;
+        }
+
+        .link-button i {
+            font-size: 1.3rem;
+        }
+
+        .portfolio {
+            background: linear-gradient(45deg, var(--nebula-violet), var(--cosmic-purple));
+        }
+
+        .behance {
+            background: linear-gradient(45deg, #0057FF, #00A6FF);
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #E1306C, #F77737);
+        }
+
+        .dribbble {
+            background: linear-gradient(45deg, #EA4C89, #D75093);
+        }
+
+        .contact {
+            background: linear-gradient(45deg, var(--copper-glow), var(--crimson-orbit));
+        }
+
+        .whatsapp {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--soft-cream);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: rgba(249, 247, 247, 0.7);
+            text-align: center;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .credits {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2.8rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .description {
+                font-size: 1rem;
+            }
+            
+            .link-button {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .social-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Animaciones de entrada */
+        .logo-container, .description, .links-container, .social-links, footer {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .logo-container {
+            animation-delay: 0.1s;
+        }
+
+        .description {
+            animation-delay: 0.3s;
+        }
+
+        .links-container {
+            animation-delay: 0.5s;
+        }
+
+        .social-links {
+            animation-delay: 0.7s;
+        }
+
+        footer {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenedor de partículas -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <div class="container">
+        <div class="logo-container">
+            <h1 class="logo">Pixel Nebula</h1>
+            <p class="tagline">branding & diseño digital</p>
+        </div>
+        
+        <p class="description">El universo visual donde <span class="highlight">lo humano y lo digital se encuentran</span>. Creatividad sin límites. Diseño consciente para marcas con alma y visión digital.</p>
+        
+        <div class="links-container">
+            <a href="#" class="link-button portfolio">
+                <i class="fas fa-briefcase"></i>
+                <span>Portfolio</span>
+            </a>
+            
+            <a href="#" class="link-button behance">
+                <i class="fab fa-behance"></i>
+                <span>Behance</span>
+            </a>
+            
+            <a href="#" class="link-button instagram">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+            
+            <a href="#" class="link-button dribbble">
+                <i class="fab fa-dribbble"></i>
+                <span>Dribbble</span>
+            </a>
+            
+            <a href="#" class="link-button contact">
+                <i class="fas fa-envelope"></i>
+                <span>Contacto</span>
+            </a>
+            
+            <a href="#" class="link-button whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+        </div>
+        
+        <div class="social-links">
+            <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-pinterest"></i>
+            </a>
+        </div>
+        
+        <footer>
+            <p>© 2023 Pixel Nebula. Todos los derechos reservados.</p>
+            <p class="credits">Creatividad sin límites. Diseño consciente.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Sistema de partículas MEJORADO - MÁS VISIBLES
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesContainer = document.getElementById('particlesContainer');
+            const colors = ['#6C63FF', '#8A4FFF', '#FF2E63', '#FF9A76', '#FFD166', '#FFFFFF'];
+            
+            function createParticle() {
+                const particle = document.createElement('div');
+                
+                // Tipos de partículas (grandes, medianas, pequeñas)
+                const types = ['particle-large', 'particle-medium', 'particle-small'];
+                const type = types[Math.floor(Math.random() * types.length)];
+                particle.className = `particle ${type}`;
+                
+                // Color aleatorio
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = color;
+                particle.style.color = color; // Para el efecto de brillo
+                
+                // Posición inicial aleatoria
+                particle.style.left = Math.random() * 100 + 'vw';
+                
+                // Duración y delay aleatorios
+                const duration = Math.random() * 6 + 4;
+                const delay = Math.random() * 3;
+                
+                particle.style.animation = `float ${duration}s ${delay}s infinite ease-in-out`;
+                
+                particlesContainer.appendChild(particle);
+                
+                // Remover partícula después de la animación
+                setTimeout(() => {
+                    if (particle.parentNode === particlesContainer) {
+                        particlesContainer.removeChild(particle);
+                    }
+                }, (duration + delay) * 1000);
+            }
+            
+            // Crear MÁS partículas iniciales
+            for (let i = 0; i < 40; i++) {
+                setTimeout(createParticle, Math.random() * 1000);
+            }
+            
+            // Seguir creando partículas más frecuentemente
+            setInterval(createParticle, 150);
+            
+            // Efectos hover en botones
+            const links = document.querySelectorAll('.link-button');
+            links.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
